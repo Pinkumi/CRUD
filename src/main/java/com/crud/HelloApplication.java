@@ -80,27 +80,14 @@ public class HelloApplication extends Application {
             }
         });
 
-        form.getChildren().addAll(
-                new Label("ID:"),txtId,
-                new Label("Nombre:"),txtNombre,
-                new Label("Dirección:"),txtDireccion,
-                new Label("Teléfonos:"),txtTelefonos,
-                new HBox(5,btnGuardar,btnCancelar)
-        );
-
-        VBox izquierda=new VBox(10);
-        izquierda.getChildren().addAll(
-                new Label("Personas Registradas:"),
-                listaPersonas,
-                new HBox(5,btnNuevo,btnEliminar)
-        );
-
-        HBox root=new HBox(15);
-        root.getChildren().addAll(izquierda,form);
+        form.getChildren().addAll(new Label("ID:"),txtId, new Label("Nombre:"),txtNombre, new Label("Dirección:"),txtDireccion, new Label("Teléfonos:"),txtTelefonos, new HBox(5,btnGuardar,btnCancelar));
+        VBox root=new VBox(10);
+        VBox.setVgrow(listaPersonas, Priority.ALWAYS);
+        root.getChildren().addAll( new Label("Personas Registradas:"), listaPersonas,  new HBox(5,btnNuevo,btnEliminar), form);
 
         cargarDatos();
 
-        Scene scene=new Scene(root,650,380);
+        Scene scene=new Scene(root,600,500);
         primaryStage.setTitle("CRUD Personas");
         primaryStage.setScene(scene);
         primaryStage.show();
